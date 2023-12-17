@@ -38,3 +38,12 @@ If you want to use a linter for this program, Dart has a linter called Dart Anal
 ```sh
    dart analyze
 ```
+
+### Tests :
+If you want to manually execute the tests then :
+
+* Go to the root of the project
+* Execute this command
+```sh
+   dart .\test\rice_cooker_test.dart
+```
