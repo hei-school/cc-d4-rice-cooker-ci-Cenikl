@@ -1,9 +1,0 @@
-{
-    "Lua.diagnostics.globals": [
-        "RiceCooker",
-        "rice_cooker",
-        "RICE_STORAGE",
-        "testAddRiceValidAmount",
-        "testAddRiceExceedingLimit"
-    ]
-}
