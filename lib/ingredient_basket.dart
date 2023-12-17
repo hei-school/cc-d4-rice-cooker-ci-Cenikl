@@ -1,5 +1,5 @@
-import 'Exception/not_more_space.dart';
-import 'Exception/empty_basket.dart';
+import 'exception/not_more_space.dart';
+import 'exception/empty_basket.dart';
 class IngredientBasket {
   List<String> ingredients = [];
 
@@ -8,15 +8,15 @@ class IngredientBasket {
       throw NotMoreSpace("The basket is full");
     }
     ingredients.add(ingredient);
-    print("You added "+ingredient+" to the basket");
+    print("You added $ingredient to the basket");
   }
 
   void removeIngredient(String ingredient) {
-    if(ingredients.length == 0){
+    if(ingredients.isEmpty){
       throw EmptyBasket("The basket is empty");
     }
     ingredients.remove(ingredient);
-    print("You removed "+ingredient+" to the basket");
+    print("You removed $ingredient to the basket");
   }
 
   void checkAllIngredients() {

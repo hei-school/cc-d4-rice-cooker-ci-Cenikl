@@ -1,13 +1,13 @@
 import 'dart:io';
+import 'package:rice_cooker/Exception/lid_is_open.dart';
+import 'package:rice_cooker/Exception/no_ingredients.dart';
+import 'package:rice_cooker/Exception/no_more_rice.dart';
+import 'package:rice_cooker/Exception/no_more_water.dart';
+import 'package:rice_cooker/Exception/not_enough_water.dart';
+import 'package:rice_cooker/Exception/not_plugged_in.dart';
+import 'package:rice_cooker/Exception/too_much_rice.dart';
+import 'package:rice_cooker/Exception/too_much_water.dart';
 import 'ingredient_basket.dart';
-import 'Exception/lid_is_open.dart';
-import 'Exception/no_ingredients.dart';
-import 'Exception/no_more_rice.dart';
-import 'Exception/no_more_water.dart';
-import 'Exception/not_enough_water.dart';
-import 'Exception/not_plugged_in.dart';
-import 'Exception/too_much_water.dart';
-import 'Exception/too_much_rice.dart';
 
 class RiceCooker {
   int riceStorage = 0;
@@ -64,7 +64,7 @@ class RiceCooker {
     if(powerOn == false){
       throw NotPluggedIn("The rice cooker is plugged out");
     }
-    if(riceStorage > 0 || steamingBasket.ingredients.length > 0){
+    if(riceStorage > 0 || steamingBasket.ingredients.isNotEmpty){
       if(isOpen == true){
         throw LidIsOpen("The rice cooker is open");
       }
@@ -73,7 +73,7 @@ class RiceCooker {
       }
       timer = time;
       for (var i = time; i > 0; i--) {
-        print(i.toString()+" minutes remaining...");
+        print("$i minutes remaining...");
       }
       timer = 0;
       print("Finished"); 
@@ -157,32 +157,32 @@ void addRice(int amount){
     throw TooMuchRice('You are adding too much rice, 10 is the maximum');
   }
   riceStorage += amount;
-  print("You added "+amount.toString()+" kg of rice");
+  print("You added $amount kg of rice");
 }
 void removeRice(int amount){
   if(riceStorage-amount < 0){
     throw NoMoreRice("You are retrieving too much rice, 0 is the minimum");
   }
   riceStorage -= amount;
-  print("You retrieved "+amount.toString()+" kg of rice");
+  print("You retrieved $amount kg of rice");
 }    
 void addWater(int amount){
   if(waterStorage+amount > 10){
     throw TooMuchWater('You are adding too much water, 10 is the maximum');
   }
   waterStorage += amount;
-  print("You added "+amount.toString()+" L of water");
+  print("You added $amount L of water");
 } 
 void removeWater(int amount){
   if(waterStorage-amount < 0){
     throw NoMoreWater("You are retrieving too much water, 0 is the minimum");
   }
   waterStorage -= amount;
-  print("You retrieved "+amount.toString()+" L of water");
+  print("You retrieved $amount L of water");
 }   
 void checkInside(){
-  print("Currently, there is "+riceStorage.toString()+"kg of rice");
-  print("Currently, there is "+waterStorage.toString()+"L of water");
+  print("Currently, there is ${riceStorage}kg of rice");
+  print("Currently, there is ${waterStorage}L of water");
 }
 
   void executeMainStorageOption(int option) {
@@ -261,16 +261,5 @@ void checkInside(){
       default:
         print("Invalid option");
     }
-  }
-}
-
-void main() {
-  RiceCooker riceCooker = RiceCooker();
-
-  while (true) {
-    riceCooker.displayOptions();
-    print("Choose a command : ");
-    int option = int.parse(stdin.readLineSync()!);
-    riceCooker.executeOption(option);
   }
 }

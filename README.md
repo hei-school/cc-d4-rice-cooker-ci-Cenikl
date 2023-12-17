@@ -5,7 +5,6 @@
 </div>
 This is a simple Rice cooker application that works mainly on the command line.
 
-
 It have the basic functionality of a rice cooker :
 * Cooks rice with water with 10 Kg and 10 L as the maximum limit
 * Cooks other ingredients like vegetables using the steam of the water
