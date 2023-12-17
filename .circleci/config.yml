@@ -1,0 +1,56 @@
+version: 2.1
+
+jobs:
+  install_dependencies:
+    docker:
+      - image: circleci/lua:5.4
+    working_directory: ~/lua-cli
+    steps:
+      - checkout
+      - run:
+          name: Set up Lua environment
+          command: |
+            mkdir -p $HOME/lua
+            mv ./* $HOME/lua
+            cd $HOME/lua
+      - run:
+          name: Install Dependencies
+          command: luarocks install --lua-dir=/usr/local/lua_modules luafilesystem
+  lint_and_test:
+    docker:
+      - image: circleci/lua:5.4
+    working_directory: ~/lua-cli
+    steps:
+      - checkout
+      - run:
+          name: Set up Lua environment
+          command: |
+            mkdir -p $HOME/lua
+            mv ./* $HOME/lua
+            cd $HOME/lua
+      - run:
+          name: Install Dependencies
+          command: luarocks install --lua-dir=/usr/local/lua_modules luafilesystem busted
+      - run:
+          name: Run Lua Linter
+          command: luacheck .
+      - run:
+          name: Run Tests
+          command: lua Test_cooker.lua
+      - run: 
+          name: Run Tests with bundle
+          command: busted
+workflows:
+  version: 2
+  build:
+    jobs:
+      - install_dependencies:
+          filters:
+            branches:
+              only:
+                - feature/lua
+      - lint_and_test:
+          filters:
+            branches:
+              only:
+                - feature/lua
