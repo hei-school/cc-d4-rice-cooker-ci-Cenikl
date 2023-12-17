@@ -1,6 +1,6 @@
-class NotMoreSpace implements Exception {
+class NoMoreSpace implements Exception {
   final String message;
-  NotMoreSpace(this.message);
+  NoMoreSpace(this.message);
   @override
   String toString() => 'CustomError: $message';
 }

@@ -19,7 +19,11 @@ _Here are the requirements to execute the application :_
 ### How to use
 Navigate to the root of the project and execute the following command :
 ```sh
-   dart rice_cooker.dart
+   dart run
+```
+or
+```sh
+   dart run .\lib\start_app.dart
 ```
 
 ### Standard used :

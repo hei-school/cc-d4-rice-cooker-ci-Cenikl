@@ -1,12 +1,12 @@
 import 'dart:io';
-import 'package:rice_cooker/Exception/lid_is_open.dart';
-import 'package:rice_cooker/Exception/no_ingredients.dart';
-import 'package:rice_cooker/Exception/no_more_rice.dart';
-import 'package:rice_cooker/Exception/no_more_water.dart';
-import 'package:rice_cooker/Exception/not_enough_water.dart';
-import 'package:rice_cooker/Exception/not_plugged_in.dart';
-import 'package:rice_cooker/Exception/too_much_rice.dart';
-import 'package:rice_cooker/Exception/too_much_water.dart';
+import 'exception/lid_is_open.dart';
+import 'exception/no_ingredients.dart';
+import 'exception/no_more_rice.dart';
+import 'exception/no_more_water.dart';
+import 'exception/not_enough_water.dart';
+import 'exception/not_plugged_in.dart';
+import 'exception/too_much_rice.dart';
+import 'exception/too_much_water.dart';
 import 'ingredient_basket.dart';
 
 class RiceCooker {
@@ -46,21 +46,21 @@ class RiceCooker {
     print("Keep warm mode is ${keepWarmMode ? 'On' : 'Off'}.");
   }
 
-  void checkStatusLight() {
+  String checkStatusLight() {
     if(isHeating){
-      print("It is heating");
+      return("It is heating");
     }
     else if(isUnderPressure){
-      print("It is under pressure");
+      return("It is under pressure");
     }
     else if(isWarm){
-      print("It is warming");
+      return("It is warming");
     }
     else {
-      print("The rice cooker is off");
+      return("The rice cooker is off");
     }
   }
-  void setTimer(int time){
+  String setTimer(int time){
     if(powerOn == false){
       throw NotPluggedIn("The rice cooker is plugged out");
     }
@@ -76,7 +76,7 @@ class RiceCooker {
         print("$i minutes remaining...");
       }
       timer = 0;
-      print("Finished"); 
+      return("Finished"); 
     } else{
       throw NoIngredients("There is no ingredients in the storage");
     }
@@ -123,7 +123,7 @@ class RiceCooker {
         toggleKeepWarmMode();
         break;
       case 4:
-        checkStatusLight();
+        print(checkStatusLight());
         break;
       case 5:
         print("Put ingredients in the main storage");
@@ -141,7 +141,7 @@ class RiceCooker {
         print("Set the timer : ");
         int time = int.parse(stdin.readLineSync()!);
          try {
-          setTimer(time);
+          print(setTimer(time));
         } catch (e) {
           print("Error : $e");
         }
@@ -180,9 +180,11 @@ void removeWater(int amount){
   waterStorage -= amount;
   print("You retrieved $amount L of water");
 }   
-void checkInside(){
-  print("Currently, there is ${riceStorage}kg of rice");
-  print("Currently, there is ${waterStorage}L of water");
+String checkInside(){
+  return("""
+  Currently, there is ${riceStorage}kg of rice
+  Currently, there is ${waterStorage}L of water
+  """);
 }
 
   void executeMainStorageOption(int option) {
@@ -224,7 +226,7 @@ void checkInside(){
         }
         break;
       case 5:
-        checkInside();
+        print(checkInside());
         break;
       case 6:
         break;
@@ -254,7 +256,7 @@ void checkInside(){
         }
         break;
       case 3:
-        steamingBasket.checkAllIngredients();
+        print(steamingBasket.checkAllIngredients());
         break;
       case 4:
         break;
