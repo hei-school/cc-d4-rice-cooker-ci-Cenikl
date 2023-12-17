@@ -1,0 +1,56 @@
+version: 2.1
+
+jobs:
+  install_dependencies:
+    docker:
+      - image: circleci/golang:1.17
+    working_directory: ~/go-cli
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: go mod download
+  lint:
+    docker:
+      - image: circleci/golang:1.17
+    working_directory: ~/go-cli
+    steps:
+      - checkout
+      - run:
+          name: Install golangci-lint
+          command: go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+      - run:
+          name: Run golangci-lint
+          command: golangci-lint run ./...
+  build_and_test:
+    docker:
+      - image: circleci/golang:1.17
+    working_directory: ~/go-cli
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: go mod download
+      - run:
+          name: Run Tests
+          command: go test -v ./...
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - install_dependencies:
+          filters:
+            branches:
+              only:
+                - feature/golang
+      - lint:
+          filters:
+            branches:
+              only:
+                - feature/golang
+      - build_and_test:
+          filters:
+            branches:
+              only:
+                - feature/golang
