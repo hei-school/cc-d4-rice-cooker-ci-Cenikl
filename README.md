@@ -37,5 +37,11 @@ If you want to use a linter for this program, you can use the following command 
 - Go to the root of the project
 - Execute this command :
 ```sh
-   luacheck rice_cooker.lua
+   luacheck start_app.lua
+```
+
+### Test cases : 
+If you want to manually execute the tests, use this command :
+```sh
+   lua Test_cooker.lua
 ```
