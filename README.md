@@ -1,1 +1,43 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/__xb4cFP)
+## RICE COOKER 
+
+<div align="center">
+    <img src="https://cdn-icons-png.flaticon.com/256/4152/4152586.png" alt="Logo" width="180" height="180">
+</div>
+This is a simple Rice cooker application that works mainly on the command line.
+
+
+It have the basic functionality of a rice cooker :
+* Cooks rice with water with 10 Kg and 10 L as the maximum limit
+* Cooks other ingredients like vegetables using the steam of the water
+* Timer in minutes with warming mode
+
+### Requirements
+_Here are the requirements to execute the application :_
+
+#### Install Ruby :
+* On Linux or macOS, Ruby is often pre-installed. You can check by typing ruby -v in the terminal. If it's not installed, you can use a package manager like apt (for Ubuntu/Debian) or brew (for macOS) to install it.
+* On Windows, you can download the RubyInstaller from [rubyinstaller.org](https://rubyinstaller.org/downloads/) and follow the installation instructions.
+
+### How to use
+Navigate to the root of the project and execute the following command :
+```sh
+   ruby rice_cooker.rb
+```
+
+### Standard used :
+The standard or naming conventions used in this application are from the following documentations :
+[rubystyle.guide](https://rubystyle.guide/)
+
+
+### Linter :
+If you want to use a linter for this program, you can use the following command :
+- Go to the root of the project
+- Execute this command :
+```sh
+   rubocop
+```
+
+If it does not work, you probably should install it before using the command :
+```sh
+   gem install rubocop
+```
