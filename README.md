@@ -41,3 +41,15 @@ If it does not work, you probably should install it before using the command :
 ```sh
    gem install rubocop
 ```
+
+### Tests :
+If you want to manually execute the tests, then install:
+* Go to the root of the project
+* Install _rspec_ to able to execute them
+```sh
+   gem install rspec
+```
+* Use this command :
+```sh
+   rspec .\Tests\rice_cooker_test.rb
+```
