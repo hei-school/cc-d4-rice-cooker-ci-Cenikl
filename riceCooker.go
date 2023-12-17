@@ -90,14 +90,14 @@ func (rc *RiceCooker) setTimer(minutes int) error {
 		}
 		rc.timer = minutes
 		fmt.Printf("Timer set for %d minutes.\n", minutes)
-		for i := rc.timer; i <= 0; i-- {
+		for i := rc.timer; i > 0; i-- {
 			fmt.Printf("%d minutes.\n", i-1)
 		}
 		rc.timer = 0
 		fmt.Printf("Finished\n")
 	}
 	fmt.Printf("There is nothing inside it")
-	return nil
+	return errors.New("There is nothing inside it")
 }
 
 func main() {
