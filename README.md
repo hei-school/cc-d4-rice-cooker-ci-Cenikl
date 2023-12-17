@@ -21,7 +21,7 @@ _Here are the requirements to execute the application :_
 ### How to use
 Navigate to the root of the project and execute the following command :
 ```sh
-   ruby rice_cooker.rb
+   ruby start_app.rb
 ```
 
 ### Standard used :
