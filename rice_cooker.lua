@@ -1,6 +1,6 @@
-local RICE_STORAGE = 0
-local WATER_STORAGE = 0
-local ingredients_basket = {}
+RICE_STORAGE = 0
+WATER_STORAGE = 0
+ingredients_basket = {}
 local TIMER = 0
 local keep_warm_mode = false
 local power_on = false
@@ -135,13 +135,13 @@ function AddRice(amount)
     end)
     if not success then
         print("Error:",result)
-        MainStorageMenu()
     end
 end
+
 function RemoveRice(amount)
     local success,result = pcall(function ()
-        if((RICE_STORAGE - amount) > 0) then
-            error("You are adding too much rice")
+        if((RICE_STORAGE - amount) < 0) then
+            error("You are removing too much rice")
         end
         if((RICE_STORAGE == 0)) then
             error("There is no rice")
@@ -151,7 +151,6 @@ function RemoveRice(amount)
     end)
     if not success then
         print("Error:",result)
-        MainStorageMenu()
     end
 end
 
@@ -165,12 +164,11 @@ function AddWater(amount)
     end)
     if not success then
         print("Error:",result)
-        MainStorageMenu()
     end
 end
 function RemoveWater(amount)
     local success,result = pcall(function ()
-        if((WATER_STORAGE - amount) > 0) then
+        if((WATER_STORAGE - amount) < 0) then
             error("You are adding too much water")
         end
         if((WATER_STORAGE == 0)) then
@@ -181,7 +179,6 @@ function RemoveWater(amount)
     end)
     if not success then
         print("Error:",result)
-        MainStorageMenu()
     end
 end
 
@@ -335,4 +332,4 @@ function StopTIMER()
     print("You stopped the TIMER")
 end
 
-MainMenu()
+
