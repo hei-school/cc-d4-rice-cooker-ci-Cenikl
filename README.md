@@ -39,3 +39,11 @@ If you want to use a linter for this program, you can use the following command 
 ```sh
    golangci-lint run
 ```
+
+### Tests : 
+If you want to manually execute the tests, then :
+* Go to the root of the project
+* Execute this command :
+```sh
+   go test
+```
