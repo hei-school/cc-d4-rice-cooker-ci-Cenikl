@@ -15,9 +15,11 @@ It have the basic functionality of a rice cooker :
 ### General Guide :
 For the moment, this application is featured in 4 different languages such as Ruby, Dart, Lua and Golang
 Here are their respecitve link, if you want to check them:
-Ruby : [Ruby Language](https://github.com/hei-school/cc-d4-rice-cooker-ci-Cenikl/tree/feature/ruby)
-Dart : [Dart Language](https://github.com/hei-school/cc-d4-rice-cooker-ci-Cenikl/tree/feature/dart)
-Lua : [Lua Language](https://github.com/hei-school/cc-d4-rice-cooker-ci-Cenikl/tree/feature/lua)
-Golang : [Golang Language](https://github.com/hei-school/cc-d4-rice-cooker-ci-Cenikl/tree/feature/golang)
 
-### Circle CI
+Ruby : [Ruby Language](https://github.com/hei-school/cc-d4-rice-cooker-ci-Cenikl/tree/feature/ruby)
+
+Dart : [Dart Language](https://github.com/hei-school/cc-d4-rice-cooker-ci-Cenikl/tree/feature/dart)
+
+Lua : [Lua Language](https://github.com/hei-school/cc-d4-rice-cooker-ci-Cenikl/tree/feature/lua)
+
+Golang : [Golang Language](https://github.com/hei-school/cc-d4-rice-cooker-ci-Cenikl/tree/feature/golang)
